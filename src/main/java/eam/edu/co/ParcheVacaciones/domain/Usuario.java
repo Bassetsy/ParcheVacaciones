@@ -1,19 +1,10 @@
 package eam.edu.co.ParcheVacaciones.domain;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import java.util.Collection;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "usuarios", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
@@ -46,6 +37,11 @@ public class Usuario {
 
     @Column(name = "pais")
     private String pais;
+
+    private String rutaImagen;
+
+    @Transient
+    private MultipartFile imagen;
 
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinTable(
@@ -143,8 +139,24 @@ public class Usuario {
         this.roles = roles;
     }
 
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
+    }
+
+    public MultipartFile getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(MultipartFile imagen) {
+        this.imagen = imagen;
+    }
+
     public Usuario(Long id, String nombre, String apellido, String email, String password, int edad, String genero,
-                   String telefono, String ciudadResidencia, String pais, Collection<Rol> roles) {
+                   String telefono, String ciudadResidencia, String pais, Collection<Rol> roles, String rutaImagen, MultipartFile imagen) {
         super();
         this.id = id;
         this.nombre = nombre;
@@ -157,10 +169,12 @@ public class Usuario {
         this.ciudadResidencia = ciudadResidencia;
         this.pais = pais;
         this.roles = roles;
+        this.rutaImagen = rutaImagen;
+        this.imagen = imagen;
     }
 
     public Usuario(String nombre, String apellido, String email, String password, int edad, String genero,
-                   String telefono, String ciudadResidencia, String pais, Collection<Rol> roles) {
+                   String telefono, String ciudadResidencia, String pais, Collection<Rol> roles, String rutaImagen, MultipartFile imagen) {
         super();
         this.nombre = nombre;
         this.apellido = apellido;
@@ -172,6 +186,8 @@ public class Usuario {
         this.ciudadResidencia = ciudadResidencia;
         this.pais = pais;
         this.roles = roles;
+        this.rutaImagen = rutaImagen;
+        this.imagen = imagen;
     }
 
     public Usuario() {

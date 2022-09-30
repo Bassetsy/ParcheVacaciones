@@ -1,8 +1,10 @@
 package eam.edu.co.ParcheVacaciones.dto;
 
 import eam.edu.co.ParcheVacaciones.domain.Rol;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.Column;
+import javax.persistence.Transient;
 import java.util.Collection;
 
 public class UsuarioRegistroDTO {
@@ -22,6 +24,10 @@ public class UsuarioRegistroDTO {
     private String ciudadResidencia;
 
     private String pais;
+
+    private String rutaImagen;
+
+    private MultipartFile imagen;
 
     public Long getId() {
         return id;
@@ -103,9 +109,25 @@ public class UsuarioRegistroDTO {
         this.pais = pais;
     }
 
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
+    }
+
+    public MultipartFile getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(MultipartFile imagen) {
+        this.imagen = imagen;
+    }
+
 
     public UsuarioRegistroDTO(String nombre, String apellido, String email, String password, int edad, String genero,
-                   String telefono, String ciudadResidencia, String pais) {
+                   String telefono, String ciudadResidencia, String pais, String rutaImagen, MultipartFile imagen) {
         super();
         this.id = id;
         this.nombre = nombre;
@@ -117,6 +139,8 @@ public class UsuarioRegistroDTO {
         this.telefono = telefono;
         this.ciudadResidencia = ciudadResidencia;
         this.pais = pais;
+        this.rutaImagen = rutaImagen;
+        this.imagen = imagen;
     }
 
     public UsuarioRegistroDTO() {

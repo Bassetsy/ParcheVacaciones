@@ -39,7 +39,8 @@ public class UsuarioServiceImpl implements UsuarioService {
                 new BCryptPasswordEncoder().encode(registroDTO.getPassword()),
                 registroDTO.getEdad(), registroDTO.getGenero(),
                 registroDTO.getTelefono(), registroDTO.getCiudadResidencia(),
-                registroDTO.getPais(), Arrays.asList(new Rol("ROLE_USER")));
+                registroDTO.getPais(), Arrays.asList(new Rol("ROLE_USER")),
+                registroDTO.getRutaImagen(), registroDTO.getImagen());
         return usuarioDao.save(usuario);
     }
 
