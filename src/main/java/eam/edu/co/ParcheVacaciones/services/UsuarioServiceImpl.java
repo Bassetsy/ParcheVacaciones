@@ -45,6 +45,18 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
+    public void editar(Usuario user) {
+        usuarioDao.delete(user);
+        usuarioDao.save(user);
+    }
+
+    @Override
+    public void editarImagen(Usuario user) {
+        usuarioDao.delete(user);
+        usuarioDao.save(user);
+    }
+
+    @Override
     public Usuario buscar(String email) {
         return usuarioDao.findByEmail(email);
     }

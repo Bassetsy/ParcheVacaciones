@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" th:action="@{/cambiarImagenPerfil/} + ${user.email}" th:object="${user}">
+    <div class="mb-3">
+ <input type="file" name="img" id="img" class="form-control">
+    </div>
+    <div class="pt-1 mb-4">
+        <button type="submit" class="form-control btn btn-primary btn-lg btn-block" name="login-submit" id="login-submit" >Aceptar</button>
+    </div>
+</form>
+</body>
+</html>
