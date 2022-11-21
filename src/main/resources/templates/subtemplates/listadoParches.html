@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Listado Parches</title>
+    <section th:replace="plantilla ::head"></section>
+</head>
+<body>
+    <section th:fragment="listadoParches">
+    <span sec:authentication="name">Usuario</span>
+    <h4 class="text-danger">Últimos Parches</h4>
+    <div th:if="${parches != null and !parches.empty}">
+        <div class="container">
+            <div class="row">
+                <div class="col-4 "  th:each="parche : ${parches}">
+                    <div class="col">
+                        <div class="card">
+                            <h5 class="card-title text-dark" th:text="${parche.titulo}"></h5>
+                            <p class="card-text text-Align-flutter text-dark">
+                                <b>Fecha: </b> <i th:text="*{parche.fecha}"></i>
+                                <b> Lugar: </b> <i th:text="*{parche.lugar}"></i>
+                            </p>
+                            <img th:src="@{../assets/{filename}(filename=*{parche.rutaImagen})}"
+                                 th:alt="*{parche.rutaImagen}" class="card-img-top" width="180px" height="300px">
+                            <p th:text="*{parche.description}" class="text-muted small"></p>
+                            <p class="card-text text-Align-flutter text-dark">
+                            </p>
+                            <div class="ButtonsU">
+                                <div class= "botones" style="margin-top: 30px">
+                                    <a sec:authorize="hasAnyRole('ROLE_ADMIN')" type="button" class="btn btn-warning" th:href="@{/eliminarParche/} + ${parche.id}">
+                                        Eliminar
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+</body>
+</html>

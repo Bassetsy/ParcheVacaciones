@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Botón Agregar</title>
+  <section th:replace="plantilla :: head"></section>
+</head>
+<body>
+<section th:fragment="btnAgregar" class="">
+  <p>¿Quieres crear un parche? <a th:href="@{/registroParche}" class="link-info">Crealo Aquí</a></p>
+</section>
+</body>
+</html>

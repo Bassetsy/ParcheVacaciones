@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Title</title>
+  <section th:replace="plantilla :: head"></section>
+</head>
+<body>
+<section th:fragment="agregarParche">
+<div id="agregarParche" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-dark">Agregar Parche</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form th:action="@{/registroParche}" method="post" th:object="${parche}" enctype="multipart/form-data">
+
+        <div th:if=${param.exito}>
+          <div class="alert alert-info">Se ha registrado exitosamente en
+            la aplicación</div>
+        </div>
+
+        <div class="modal-body">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="iG-titulo">Título</span>
+            <input type="text" class="form-control" id="titulo" name="titulo" aria-describedby="iG-titulo" th:field="*{titulo}">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="iG-lugar">Lugar</span>
+            <input type="text" class="form-control" id="lugar" name="lugar" aria-describedby="iG-lugar" th:field="*{lugar}">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="iG-fecha">Fecha</span>
+            <input type="text" class="form-control" id="fecha" name="fecha" aria-describedby="iG-fecha">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="iG-description">Descripción</span>
+            <input type="text" class="form-control" id="description" name="description" aria-describedby="iG-description">
+          </div>
+          <div class="mb-3">
+            <label for="imagen" class="form-label">Imagen: </label> <input
+                  type="file" name="imagen" id="imagen" class="form-control">
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</section>
+</body>
+</html>
